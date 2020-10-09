@@ -3,15 +3,16 @@ import {
 	Quaternion,
 } from 'three';
 
-let cameraQuaternion = new Quaternion();
+let Class = class extends Mesh {};
 
-let Class = class extends Mesh {
-	onBeforeRender(renderer, scene, camera) {
-		//this.lookAt(camera.position);
-		this.setRotationFromQuaternion(camera.getWorldQuaternion(cameraQuaternion));
-	}
-};
+Object.assign(Class.prototype, {
+	isCameraFacingGroup: true,
 
-Class.prototype.isCameraFacingGroup = true;
-
-export default Class;
+	onBeforeRender: (() => {
+		let cameraQuaternion = new Quaternion();
+		return function(renderer, scene, camera) {
+			//this.lookAt(camera.position);
+			this.setRotationFromQuaternion(camera.getWorldQuaternion(cameraQuaternion));
+		};
+	})(),
+});
