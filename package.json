@@ -1,0 +1,32 @@
+{
+	"name": "@seregpie/three.camera-facing-group",
+	"version": "1.0.1",
+	"description": "A group of objects that are always facing the camera.",
+	"keywords": [
+		"camera",
+		"group",
+		"look at",
+		"three"
+	],
+	"license": "MIT",
+	"author": "Sergej Sintschilin <seregpie@gmail.com>",
+	"files": [],
+	"main": "index.js",
+	"repository": "github:SeregPie/THREE.CameraFacingGroup",
+	"scripts": {
+		"build": "rollup -c",
+		"prepublishOnly": "npm run build"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.11.6",
+		"@babel/preset-env": "^7.11.5",
+		"@rollup/plugin-babel": "^5.2.1",
+		"eslint": "^7.10.0",
+		"eslint-config-seregpie": "^1.0.1",
+		"rollup": "^2.29.0",
+		"rollup-plugin-terser": "^7.0.2"
+	},
+	"peerDependencies": {
+		"three": ">=0.86"
+	}
+}
