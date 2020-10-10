@@ -5,14 +5,14 @@ import {
 
 let Class = class extends Mesh {};
 
-Object.assign(Class.prototype, {
-	isCameraFacingGroup: true,
+{
+	let cameraQuaternion = new Quaternion();
+	Class.prototype.onBeforeRender = function(renderer, scene, camera) {
+		//this.lookAt(camera.position);
+		this.setRotationFromQuaternion(camera.getWorldQuaternion(cameraQuaternion));
+	};
+}
 
-	onBeforeRender: (() => {
-		let cameraQuaternion = new Quaternion();
-		return function(renderer, scene, camera) {
-			//this.lookAt(camera.position);
-			this.setRotationFromQuaternion(camera.getWorldQuaternion(cameraQuaternion));
-		};
-	})(),
-});
+Class.prototype.isCameraFacingGroup = true;
+
+export default Class;
